@@ -1,0 +1,19 @@
+@import "../../../../../../styles/color"
+@import "../../../../../../styles/integer"
+
+#log-wrapper
+  height: 100%
+  
+  #log
+    margin-top: $margin-normal
+    height: 200px
+    font-size: $font-small
+    border: $color-text-dark
+    overflow: auto
+
+    .line-item
+      padding: $margin-normal $margin-normal $margin-normal $margin-normal
+      margin-bottom: 0
+
+.line-item:nth-child(even)
+  background: $color-input-background

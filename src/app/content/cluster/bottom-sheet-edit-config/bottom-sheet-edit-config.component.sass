@@ -1,0 +1,96 @@
+@import "../../../../../styles/color"
+@import "../../../../../styles/integer"
+
+::ng-deep .mat-bottom-sheet-container
+  padding: $margin-x-medium 0 !important
+
+h4
+  margin-bottom: 0
+
+a
+  font-size: $font-x-normal
+
+  &:focus
+    outline: none
+
+.cluster-name-input-wrapper
+  margin-top: -$margin-small
+  font-size: $font-xxx-large
+  height: $height-xx-medium
+  .input-element:disabled
+    color: $color-black
+  input
+    border: none
+  input:focus
+    outline: none
+  .mat-error
+    font-size: 50%
+    position: relative
+    top: -$margin-xxx-small
+
+button
+  margin-left: $margin-xx-large
+
+.bottom-sheet-cluster-edit-container-wrapper
+  height: 100%
+  padding-top: $margin-small
+  padding-left: $margin-small
+  overflow: hidden
+
+.action-buttons-wrapper
+  margin-top: -$margin-xxx-small
+  .mat-icon-button
+    position: relative
+    top: -$margin-tiny
+    .close-icon-button
+      position: relative
+      top: -$margin-x-tiny
+      left: $margin-x-tiny
+
+.shadow-viewer
+  width: 100%
+  height: $margin-tiny
+
+.scrolling-viewer-shadow
+  box-shadow: 0 $margin-tiny $margin-x-tiny rgba(0,0,0,.2), 0 $margin-tiny $margin-x-tiny rgba(0,0,0,.14), 0 $margin-tiny $margin-x-tiny rgba(0,0,0,.12)
+
+.bottom-sheet-cluster-form-wrapper
+  margin-top: $margin-tiny
+  padding: 0 $margin-small $margin-small $margin-small
+  height: 60vh
+  overflow-y: auto
+  overflow-x: hidden
+
+.padding-right-xxx-large
+  padding-right: $margin-xxx-large
+
+.padding-right-xx-large
+  padding-right: $margin-xx-large
+
+.padding-left-xx-large
+  padding-left: $margin-xx-large
+
+.round-corners
+  border-radius: $border-radius-small
+  border: $margin-x-tiny solid $color-lightgray
+  padding: $margin-small $margin-x-medium
+
+.child-action-button
+  margin-top: -$margin-small
+  margin-right: -$margin-small
+
+#grid-container-cluster
+  display: grid
+  grid-column-gap: $margin-small
+  grid-row-gap: $margin-xx-large
+  grid-template-columns: repeat(6, 16%)
+  grid-template-rows: repeat(2, auto)
+
+#grid-item-config
+  grid-column: 1 / 4
+  grid-row: 1 / 2
+
+#grid-item-logging
+  grid-column: 4 / 7
+  grid-row: 1 / 2
+  align-self: stretch

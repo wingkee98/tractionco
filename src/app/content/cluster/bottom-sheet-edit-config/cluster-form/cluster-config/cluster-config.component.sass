@@ -1,0 +1,56 @@
+@import "../../../../../../../styles/styles"
+@import "../../../../../../../styles/color"
+@import "../../../../../../../styles/integer"
+@import "./../../bottom-sheet-edit-config.component"
+
+form
+  margin-top: -$margin-xxx-large
+
+h6
+  margin-left: $margin-x-medium
+
+#title-cluster-config
+  h4, mat-form-field
+    display: inline-block
+
+  mat-form-field
+    margin-left: $margin-xx-large
+
+#default-config-wrapper
+  margin-top: $margin-medium
+  margin-bottom: -$margin-xxx-small;
+
+#default-config-label
+  font-size: $font-xx-small
+  margin-bottom: $margin-x-small
+
+#default-config-list
+  margin-top: -$margin-x-small
+  margin-bottom: $margin-x-large
+
+  .mat-chip
+    font-size: 12px
+    height: 28px
+
+  .mat-chip.mat-standard-chip
+    background-color: $color-white
+    border: 1px solid $color-lightgray
+
+  .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary
+    background-color: $color-primary-selected
+
+.default-config-button-disabled
+  cursor: default
+
+.default-config-button-enabled
+  cursor: pointer
+
+.hidden-field
+  display: none
+
+.no-horizon-padding
+  padding-left: 0
+  padding-right: 0
+
+.select-field
+  margin-bottom: -$margin-x-medium

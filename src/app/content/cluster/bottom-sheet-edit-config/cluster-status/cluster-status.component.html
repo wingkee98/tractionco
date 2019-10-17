@@ -1,0 +1,80 @@
+<div class="cluster-status-wrapper padding-left-large no-top-padding">
+  <div class="row col">
+    <!-- configuration status -->
+    <div class="status-wrapper vertical-right-line col-auto padding-left-large">
+      <div class="status no-left-margin">
+        <div class="indicator-status mat-elevation-z1 d-inline-block"
+              [ngClass]="configuration.getStatusCss(configuration)"></div>
+        <div class="d-inline-block status status-value">
+          {{configuration.status}}
+        </div>
+      </div>
+    </div>
+
+    <!-- dates status labels -->
+    <div class="status-wrapper no-right-padding col-auto">
+      <div class="status no-left-margin layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.DATE_CREATED' | translate}}</span>
+      </div>
+      <div class="status no-left-margin layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.DATE_LAST_UPDATED' | translate}}</span>
+      </div>
+    </div>
+    <!-- dates status values -->
+    <div class="status-wrapper vertical-right-line no-left-padding col-auto">
+      <div class="status no-left-margin layout">
+        <span class="status-value">{{configuration.getDate(configuration.dateCreated)}}</span>
+      </div>
+      <div class="status no-left-margin layout">
+        <span class="status-value">{{configuration.getDate(configuration.dateLastUpdated)}}</span>
+      </div>
+    </div>
+
+    <!-- operational and workbench URLs labels -->
+    <div class="status-wrapper no-right-padding col-auto">
+      <div class="status no-left-margin layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.OPERATIONAL_URL' | translate}}</span>
+      </div>
+      <div class="status no-left-margin layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.WORKBENCH_URL' | translate}}</span>
+      </div>
+    </div>
+    <!-- operational and workbench URLs values -->
+    <div class="status-wrapper vertical-right-line no-left-padding col-auto">
+      <div class="status no-left-margin layout">
+        <span class="status-value">
+          <a href="{{getFrontendUrl()}}" [class.disabled]="!shouldDisplayUrl()" target="_blank">{{getFrontendUrl()}}</a>
+        </span>
+      </div>
+      <div class="status no-left-margin layout">
+        <span class="status-value">
+          <a href="{{getWorkbenchUrl()}}" [class.disabled]="!shouldDisplayUrl()" target="_blank">{{getWorkbenchUrl()}}</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- nomad and gateway URLs labels -->
+    <div class="status-wrapper no-right-padding col-auto">
+      <div class="status no-left-margin no-left-padding layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.NOMAD_URL' | translate}}</span>
+      </div>
+      <div class="status no-left-margin no-left-padding layout">
+        <span class="status-label">{{'BOTTOM_SHEET_CLUSTER.STATUS.GATEWAY_URL' | translate}}</span>
+      </div>
+    </div>
+    <!-- nomad and gateway URLs values -->
+    <div class="status-wrapper no-left-padding col">
+      <div class="status no-left-margin layout">
+        <span class="status-value">
+          <a href="{{getNomadUrl()}}" [class.disabled]="!shouldDisplayUrl()" target="_blank">{{getNomadUrl()}}</a>
+        </span>
+      </div>
+      <div class="status no-left-margin layout">
+        <span class="status-value">
+          <a href="{{getGatewayUrl()}}" [class.disabled]="!shouldDisplayUrl()" target="_blank">{{getGatewayUrl()}}</a>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

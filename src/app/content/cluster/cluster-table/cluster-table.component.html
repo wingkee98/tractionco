@@ -1,0 +1,68 @@
+<mat-card>
+  <table class="table table-striped" [mfData]="dataSource" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+      <th></th>
+      <th>
+        <mfDefaultSorter by="status">{{'DATATABLE_TITLE_STATUS' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="clusterName">{{'DATATABLE_CLUSTER_NAME' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="clusterRegion">{{'DATATABLE_REGION' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="server.instanceType">{{'DATATABLE_TITLE_SERVER_INSTANCE_TYPE' | translate}}</mfDefaultSorter>
+      </th>
+      <th class="text-right">
+        <mfDefaultSorter by="server.count">{{'DATATABLE_TITLE_SERVER_COUNT' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="client.instanceType">{{'DATATABLE_TITLE_CLIENT_INSTANCE_TYPE' | translate}}</mfDefaultSorter>
+      </th>
+      <th class="text-right">
+        <mfDefaultSorter by="client.count">{{'DATATABLE_TITLE_CLIENT_COUNT' | translate}}</mfDefaultSorter>
+      </th>
+      <th class="text-right">
+        <mfDefaultSorter by="dateCreated">{{'DATATABLE_TITLE_DATE_CREATED' | translate}}</mfDefaultSorter>
+      </th>
+      <th class="text-right">
+        <mfDefaultSorter by="dateLastUpdated">{{'DATATABLE_TITLE_DATE_LAST_UPDATED' | translate}}</mfDefaultSorter>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let configuration of mf.data; let i = index" (click)="editRow(i, configuration)">
+      <td class="transition" *ngIf="configuration.shouldDisplayEdit(configuration)"><mat-icon class="icon-edit">edit</mat-icon></td>
+      <td class="transition" *ngIf="configuration.shouldDisplayLoading(configuration)">
+        <div id="progress">
+          <app-progress [showProgress]="configuration.shouldDisplayLoading(configuration)"
+                        [center]="centered"></app-progress>
+        </div>
+      </td>
+      <td class="transition">
+        <div class="indicator-status mat-elevation-z1 d-inline-block"[ngClass]="configuration.getStatusCss(configuration)"></div>
+        <div class="d-inline-block status">
+          {{configuration.status}}
+        </div>
+      </td>
+      <td class="transition">{{configuration.clusterName}}</td>
+      <td class="transition">{{configuration.clusterRegion}}</td>
+      <td class="transition">{{configuration.server.instanceType}}</td>
+      <td class="transition text-right">{{configuration.server.count}}</td>
+      <td class="transition">{{configuration.client.instanceType}}</td>
+      <td class="transition text-right">{{configuration.client.count}}</td>
+      <td class="transition text-right">{{configuration.getDate(configuration.dateCreated)}}</td>
+      <td class="transition text-right">{{configuration.getDate(configuration.dateLastUpdated)}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="12">
+        <mfBootstrapPaginator></mfBootstrapPaginator>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</mat-card>

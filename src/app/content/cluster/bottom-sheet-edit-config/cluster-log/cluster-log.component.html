@@ -1,0 +1,27 @@
+<div id="log-wrapper" class="round-corners" (resized)="onResized($event)">
+  <div class="row">
+    <div class="col">
+
+      <div id="log-header" class="layout">
+        <div class="match-parent">
+          <h5>{{'BOTTOM_SHEET_CLUSTER.LOGGING.TITLE' | translate}}</h5>
+        </div>
+
+        <button *ngIf="!isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreen()">
+          <i class="material-icons">fullscreen</i>
+        </button>
+
+        <button *ngIf="isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreenExit()">
+          <i class="material-icons">fullscreen_exit</i>
+        </button>
+      </div>
+
+      <div id="log" #log smartScroll [style.height.px]="logMessageContainerHeight">
+        <div class="line-item" *appInfiniteScrollFor="let message of configuration.logMessages">
+          <div [innerHtml]="getLogMessageHtml(message) | safeHtml"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

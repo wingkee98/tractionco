@@ -1,0 +1,21 @@
+<div id="monitor-wrapper" class="round-corners">
+  <div class="row">
+    <div class="col">
+
+      <div class="layout">
+        <div class="match-parent">
+          <h5>{{'BOTTOM_SHEET_CLUSTER.MONITORING.TITLE' | translate}}</h5>
+        </div>
+
+        <button *ngIf="!isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreen()">
+          <i class="material-icons">fullscreen</i>
+        </button>
+
+        <button *ngIf="isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreenExit()">
+          <i class="material-icons">fullscreen_exit</i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

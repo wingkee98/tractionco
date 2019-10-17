@@ -1,0 +1,23 @@
+<div class="round-corners">
+  <div class="layout">
+    <div class="match-parent">
+      <h5>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.TITLE' | translate}}</h5>
+    </div>
+
+    <app-cluster-detail [configuration]="configuration" [formStateChangeObserver]="onFormStateChanged"
+                          (formFieldChange)="onFormFieldChange($event)">
+      </app-cluster-detail>
+  
+    <button *ngIf="!isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreen()">
+      <i class="material-icons">fullscreen</i>
+    </button>
+
+    <button *ngIf="isFullScreen" mat-icon-button class="child-action-button" (click)="onFullScreenExit()">
+      <i class="material-icons">fullscreen_exit</i>
+    </button>
+  </div>
+
+  <app-cluster-config [configuration]="configuration" [formStateChangeObserver]="onFormStateChanged"
+                      (formFieldChange)="onFormFieldChange($event)">
+  </app-cluster-config>
+</div>

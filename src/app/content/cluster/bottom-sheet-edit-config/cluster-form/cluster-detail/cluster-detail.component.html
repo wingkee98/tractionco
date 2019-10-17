@@ -1,0 +1,43 @@
+<form [formGroup]="configurationForm">
+  <div id="region-wrapper">
+    <label for="for-label-region">
+      {{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_REGION' | translate}}
+    </label>
+    <mat-form-field>
+      <mat-select id="for-label-region"
+                  formControlName="clusterRegion">
+        <mat-option *ngFor="let region of getClusterRegions()"
+                    [value]="region">
+          {{region}}
+        </mat-option>
+      </mat-select>
+      <mat-error>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.ERROR_REGION' | translate}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!--<div class="row">
+    <div class="col">
+      <mat-form-field class="col">
+        <mat-select placeholder="{{'DIALOG_CLUSTER.INPUT_CLUSTER_OWNER' | translate}}"
+                    formControlName="clusterOwner" [(ngModel)]="defaultUser">
+          <mat-option *ngFor="let user of users" [value]="user.name">
+            {{user.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{'DIALOG_CLUSTER.ERROR_OWNER' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field>
+        <input matInput formControlName="clusterExpiration" [matDatepicker]="picker"
+               placeholder="{{'DIALOG_CLUSTER.INPUT_CLUSTER_EXPIRATION' | translate}}"
+               [(ngModel)]="date"
+               [min]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>{{'DIALOG_CLUSTER.ERROR_EXPIRATION' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>-->
+</form>

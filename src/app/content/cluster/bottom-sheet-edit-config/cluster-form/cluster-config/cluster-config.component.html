@@ -1,0 +1,113 @@
+<form [formGroup]="configurationForm">
+  <div id="default-config-wrapper" class="row">
+    <div id="title-cluster-config" class="col">
+      <div id="default-config-label">{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.TITLE_DEFAULT_CONFIGS' | translate}}</div>
+
+      <div id="default-config-list">
+        <mat-chip-list disabled>
+          <mat-chip *ngFor="let defaultConfigName of defaultClusterConfigLocalizationNames"
+            [selected]="defaultConfig.value === defaultConfigName"
+            [disabled]="isDefaultConfigDisabled(defaultConfigName)"
+            [ngClass]="defaultConfigButtonClassName(defaultConfigName)"
+            (click)="setDefaultConfigurations(defaultConfigName)">
+            {{defaultConfigName | translate}}
+          </mat-chip>
+        </mat-chip-list>
+        <div class="hidden-field">
+          <mat-form-field>
+            <input #defaultConfig matInput formControlName="defaultConfigs">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col no-horizon-padding">
+      <h6>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.TITLE_SERVICE_CONFIGURATIONS' | translate}}</h6>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_CASSANDRA' | translate}}"
+                    formControlName="cassandraInstanceCount">
+          <mat-option *ngFor="let instanceCount of getServiceInstanceCounts()"
+                      [value]="instanceCount">
+            {{instanceCount}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col  select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_ELASTIC_SEARCH' | translate}}"
+                    formControlName="elasticsearchInstanceCount">
+          <mat-option *ngFor="let instanceCount of getServiceInstanceCounts()"
+                      [value]="instanceCount">
+            {{instanceCount}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_KAFKA' | translate}}"
+                    formControlName="kafkaInstanceCount">
+          <mat-option *ngFor="let instanceCount of getServiceInstanceCounts()"
+                      [value]="instanceCount">
+            {{instanceCount}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col no-horizon-padding">
+      <h6>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.TITLE_SERVER_CONFIG' | translate}}</h6>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_SERVER_INSTANCE_TYPE' | translate}}"
+                    formControlName="serverInstanceType">
+          <mat-option *ngFor="let type of getServerInstanceTypes()"
+                      [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.ERROR_SERVER_INSTANCE_TYPE' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_SERVER_COUNT' | translate}}"
+                    formControlName="serverInstanceCount">
+          <mat-option *ngFor="let count of getServerClusterCounts()"
+                      [value]="count">
+            {{count}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.ERROR_SERVER_INSTANCE_COUNT' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col select-field no-horizon-padding">
+      <h6>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.TITLE_CLIENT_CONFIG' | translate}}</h6>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_CLIENT_INSTANCE_TYPE' | translate}}"
+                    formControlName="clientInstanceType">
+          <mat-option *ngFor="let type of getClientInstanceTypes()"
+                      [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.ERROR_CLIENT_INSTANCE_TYPE' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col select-field">
+        <mat-select placeholder="{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.INPUT_CLIENT_COUNT' | translate}}"
+                    formControlName="clientInstanceCount">
+          <mat-option *ngFor="let count of getClientClusterCounts()"
+                      [value]="count">
+            {{count}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{'BOTTOM_SHEET_CLUSTER.CONFIGURATIONS.ERROR_CLIENT_INSTANCE_COUNT' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+</form>
+

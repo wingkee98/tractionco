@@ -1,0 +1,55 @@
+<div class="bottom-sheet-cluster-edit-container-wrapper">
+
+  <!-- dialog header -->
+  <div class="layout padding-right-xx-large padding-left-xx-large">
+
+    <!-- title -->
+    <div class="match-parent cluster-name-input-wrapper">
+      <td class="padding-right-xx-large">
+        <form [formGroup]="clusterForm">
+            <input
+              placeholder="{{'BOTTOM_SHEET_CLUSTER.INPUT_CLUSTER_NAME' | translate}}"
+              formControlName="clusterName"
+              [maxlength]="maxLengthOfClusterName"
+              (input)="onFormFieldClusterNameChange()">
+        </form>
+      </td>
+      <td class="transition" *ngIf="shouldDisplayLoading()">
+        <div id="progress">
+          <app-progress [showProgress]="shouldDisplayLoading()" [center]="centered"></app-progress>
+        </div>
+      </td>
+    </div>
+
+    <!-- close bottom sheet button -->
+    <div class="action-buttons-wrapper">
+      <app-cluster-action-buttons
+        [configuration]="configuration" [formFieldChangeObserver]="onConfigFormChanged"
+        (actionButtonClick)="onActionButtonClick($event)">
+      </app-cluster-action-buttons>
+
+      <button mat-icon-button (click)="closeBottomSheetEditConfiguration()">
+        <i class="material-icons close-icon-button">close</i>
+      </button>
+    </div>
+  </div>
+
+  <!-- status component -->
+  <app-cluster-status [configuration]="configuration" [formFieldChangeObserver]="onConfigFormChanged"></app-cluster-status>
+
+  <div class="shadow-viewer" [ngClass]="shadowClassName"></div>
+  <div (scroll)="onFormContainerScroll($event)" class="bottom-sheet-cluster-form-wrapper padding-left-xx-large
+        padding-right-xxx-large">
+
+    <div id="grid-container-cluster">
+      <div id="grid-item-config">
+        <app-cluster-form [configuration]="configuration" [formStateChangeObserver]="onFormStateChanged">
+        </app-cluster-form>
+      </div>
+
+      <div id="grid-item-logging">
+        <app-cluster-log [configuration]="configuration"></app-cluster-log>
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+<button *ngIf="shouldDeleteButtonShow()" mat-raised-button color="primary" (click)="deleteConfiguration()"
+  [disabled]="shouldDisableDeleteButton()">
+    <mat-icon class="material-icons margin-bottom-small padding-right-tiny">delete</mat-icon>
+    {{'BOTTOM_SHEET_CLUSTER.ACTION_BUTTON.DELETE_CLUSTER' | translate}}
+</button>
+
+<button *ngIf="shouldCreateButtonShow()" mat-raised-button color="primary" (click)="createConfiguration()"
+  [disabled]="shouldDisableCreateButton()">
+  <mat-icon class="material-icons margin-bottom-small padding-right-tiny">add</mat-icon>
+  {{'BOTTOM_SHEET_CLUSTER.ACTION_BUTTON.CREATE_CLUSTER' | translate}}
+</button>
+
+<button *ngIf="shouldDeployButtonShow()" margin-bottom-small mat-raised-button color="primary" (click)="deployCuneiform()"
+  [disabled]="shouldDisableDeployButton()">
+  <mat-icon class="material-icons padding-right-tiny">forward</mat-icon>
+  {{'BOTTOM_SHEET_CLUSTER.ACTION_BUTTON.DEPLOY_CUNEIFORM' | translate}}
+</button>
+
+<button *ngIf="shouldStartServicesButtonShow()" margin-bottom-small mat-raised-button color="primary"
+  (click)="startCuneiformServices()"
+  [disabled]="shouldDisableStartServicesButton()">
+  <mat-icon class="material-icons padding-right-tiny">play_arrow</mat-icon>
+  {{'BOTTOM_SHEET_CLUSTER.ACTION_BUTTON.START_SERVICES' | translate}}
+</button>
